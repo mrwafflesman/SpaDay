@@ -4,8 +4,20 @@
 @{
 }
 <div id="clientProfile">
+    <h3>Client profile</h3>
+    <p>@ViewBag.Name</p>
 </div>
 <div id="servicesMenu">
+    @if (ViewBag.ManiPedi == "manicure")
+    {
+        ViewBag.ManiPedi = "Our manicure is a great way to spend 30 minutes of your day! We use shea butter hand cream and the finest gel polish.";
+    } else if (ViewBag.ManiPedi == "pedicure")
+    {
+        ViewBag.ManiPedi = "Relax for 45 minutes in pure luxury! Our massage chairs and experienced nail techs are here to get your feet in shape for sandal season!";
+    } else if (ViewBag.ManiPedi == "both")
+    {
+        ViewBag.ManiPedi = "Our manicure is a great way to spend 30 minutes of your day! We use shea butter hand cream and the finest gel polish.\nRelax for 45 minutes in pure luxury! Our massage chairs and experienced nail techs are here to get your feet in shape for sandal season!";
+    }
 </div>
 
 <h1>Fancy Spa</h1>
@@ -14,13 +26,23 @@
 <div id="servicesMenu">
 
     <h5>Facial Treatments</h5>
-    <p>Your //TODO: pass the skintype value in here// skin type is best suited to the follow facial types:</p>
+    <p>Your @ViewBag.SkinType skin type is best suited to the follow facial types:</p>
     
     <ul>
-        //TODO: iterate through appropriate facial treatments
+        @foreach(string facial in ViewBag.AppropriateFacials)
+        {
+            <li>@facial</li>
+        }
     </ul>
 
     <h5>Nail Services</h5>
-    // TODO: display a description for the nail service selected
+        <p>@ViewBag.ManiPedi</p>
     
+</div>
+<h5>Nail polish colors</h5>
+<div id="colors">
+    <div id="red"></div>
+    <div id="blue"></div>
+    <div id="purple"></div>
+    <div id="yellow"></div>
 </div>
