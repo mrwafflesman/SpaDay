@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SpaDay.Models;
 
 namespace SpaDay.Controllers
 {
@@ -14,26 +15,27 @@ namespace SpaDay.Controllers
             return View();
         }
 
-        [HttpPost]
-        [Route("/user/add")]
+        [HttpGet]
+        [Route("/User/Add")]
         public IActionResult Add()
         {
-            return View("Add");
+            return View();
         }
 
         [HttpPost]
-        [Route("/user")]
+        [Route("/User")]
         public IActionResult SubmitAddUserForm (User newUser, string verify)
         {
-            
-            if (newUser.Password == verify)
+            if (newUser.Verify(verify))
             {
-                ViewBag.username = newUser.Name;
-                ViewBag.email = newUser.email;
+                ViewBag.username = newUser.Username;
+                ViewBag.email = newUser.Email;
                 return View("Index");
             }
             else
             {
+                ViewBag.username = newUser.Username;
+                ViewBag.email = newUser.Email;
                 ViewBag.error = "Password does not match.";
                 return View("Add");
             }

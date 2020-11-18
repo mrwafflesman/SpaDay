@@ -1,5 +1,5 @@
 ﻿
-<form method='post' action="/user">
+<form method='post' action="/User">
     Username:
     <br>
     <input type="text" name="Username" value=@ViewBag.username>
@@ -10,11 +10,16 @@
     <br>
     Password:
     <br>
+    <input type="password" name="Password">
+    <br>
+    Verify Password:
+    <br>
+    <input type="password" name="verify">
     @if (ViewBag.error == "Password does not match.")
     {
         <p>The password you entered is not correct. Try again.</p>
         ViewBag.error = "";
     }
-    <input type="password" name="Password">
+    <p>@ViewBag.error</p>
     <input type="submit" name="Submit">
 </form>

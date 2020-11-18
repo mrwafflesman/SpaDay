@@ -15,5 +15,24 @@ namespace SpaDay.Models
         {
 
         }
+
+        public User(string username, string email, string password)
+        {
+            Username = username;
+            Email = email;
+            Password = password;
+        }
+
+        public bool Verify(string verify)
+        {
+            if(verify == Password)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
