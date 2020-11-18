@@ -1,0 +1,20 @@
+﻿
+<form method='post' action="/user">
+    Username:
+    <br>
+    <input type="text" name="Username" value=@ViewBag.username>
+    <br>
+    Email:
+    <br>
+    <input type="email" name="Email" value=@ViewBag.email>
+    <br>
+    Password:
+    <br>
+    @if (ViewBag.error == "Password does not match.")
+    {
+        <p>The password you entered is not correct. Try again.</p>
+        ViewBag.error = "";
+    }
+    <input type="password" name="Password">
+    <input type="submit" name="Submit">
+</form>
